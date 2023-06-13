@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="">
+  <h1 class="m-3 fs-1">liste des Questions</h1>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    {% for question in questions %}
+    <div class="col-4 p-3">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="text-center">{{ question.question }}</h3>
+          <ol class="list-group list-group-numbered pb-3 pt-3">
+            <li class="list-group-item">{{ question.option_one }}</li>
+            <li class="list-group-item">{{ question.option_two }}</li>
+            <li class="list-group-item">{{ question.option_three }}</li>
+            <li class="list-group-item">{{ question.option_four }}</li>
+            <li class="list-group-item">{{ question.option_five }}</li>
+          </ol>
+
+          <a href="#" class="btn btn-primary">Voir la biographie</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

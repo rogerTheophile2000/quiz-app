@@ -1,10 +1,10 @@
 from django.urls import path
-from quizapp.views import *
+from . import views
 
 
 urlpatterns = [
-    path('', home ,name='home'),
-    path('login/', loginPage ,name='login'),
-    path('logout/', logoutPage ,name='logout'),
-    path('register/', registerPage ,name='register'),
+    path('', views.home ,name='home'),
+    path('login/', views.loginPage ,name='login'),
+    path('logout/', views.logoutPage ,name='logout'),
+    path('register/', views.registerPage ,name='register'),
 ]

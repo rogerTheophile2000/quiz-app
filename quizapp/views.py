@@ -1,7 +1,7 @@
-from django.shortcuts import redirect,render
+from django.shortcuts import redirect,render, get_object_or_404
 from django.contrib.auth import login,logout,authenticate
 from .forms import *
-from .models import *
+from .models import QuestionsModel
 from django.http import HttpResponse
 from django.contrib.auth.models import auth
 
@@ -69,8 +69,8 @@ def loginPage(request):
             return redirect('/')
       context={}
       return render(request,'login.html',context)
-    
-    
+      
 def logoutPage(request):
     auth.logout(request)
     return redirect('/')
+

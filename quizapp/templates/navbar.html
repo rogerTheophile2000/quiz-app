@@ -6,22 +6,38 @@
         margin-right: 20px; 
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <button type="button" class="navbar-toggler"  data-toggle="collapse" data-target="#navbarbnav" ariacontrols="navbarNav" aria-expanded="false" arialabel="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarnav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home </a>
-            </li>
-
-            <li class="nav-item active"> </li> 
-            <li class="nav-item"> <a class="nav-link" href="{% url 'login' %}">Login </a> </li>
-        </ul>
+<nav class="navbar  navbar-expand-sm navbar-dark bg-dark p-3 pl-5 pr-5 mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Quiz app</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Question </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'question_display' %}">Questions </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %} 
+                <span class="greet"> Hello, {{request.user}} </span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}"> Logout </a>
+                </li>
+                {% else %}
+                <li class="nav-item"> 
+                    <a class="nav-link" href="{% url 'login' %}">Login </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-    {% if user.is_authenticated %} 
-    <span class="greet"> Hello, {{request.user}} </span>
-    {% endif %}
-    <span><a class="greet" href="{% url 'logout' %}"> Logout </a></span>
 </nav>
