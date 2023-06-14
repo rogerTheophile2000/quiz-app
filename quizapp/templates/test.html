@@ -12,7 +12,56 @@
     <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/blog/">
 
 
-
+    {% extends 'base.html' %} 
+    {% block content %} 
+    {% load static %}
+    <div class="container">
+      <h1>Quiz</h1>
+      <form method="post" action="">
+        {% csrf_token %} {% for q in questions%}
+        <div class="form-group">
+          <label for="question">{{q.question}}</label>
+        </div>
+        <div class="form-check">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="{{q.question}}"
+              id="gridRadio1" value="{{ q.option_one }}" checked />
+            <label class="form-check-label" for="gridRadios1">
+              {{q.option_one}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="{{q.question}}" id="gridRadio2" value="{{ q.option_two }}" />
+            <label class="form-check-label" for="gridRadios2">
+              {{q.option_two}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" class="form-check-input" name="{{q.question}}" id="gridRadio3" value="{{ q.option_three }}" />
+            <label class="form-check-label" for="gridRadios1">
+              {{q.option_three}}
+            </label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="{{q.question}}" id="gridRadio4" value="{{ q.option_four }}" />
+            <label class="form-check-label" for="gridRadios2">
+              {{q.option_four}}
+            </label>
+          </div>
+          <br />
+        </div>
+        {% endfor %}
+        <br />
+        <button type="submit" class="btn btnprimary">Submit</button>
+      </form>
+      {% block script %}
+      <script>
+        console.log("hello world");
+      </script>
+      {% endblock script %}
+    </div>
+    {% endblock %}
+    
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">

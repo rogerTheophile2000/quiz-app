@@ -1,10 +1,17 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block content %}
-<div class="container jumbotron">
-  <form method="POST" action="">
-    {% csrf_token %} {{form.as_p}}
-    <input class="btn btn-primary" type="submit" value="register here" />
-  </form>
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <h1>Register</h1>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="">
+        {% csrf_token %} {{form.as_p}}
+        <input class="btn btn-primary" type="submit" value="register here" />
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}
